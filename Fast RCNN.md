@@ -14,13 +14,15 @@ RCNN is slow because it performs a ConvNet forward pass each object proposal, wi
 ## SPPnet
 1. Spatial Pyamid Pooling
 2. not need warp region proposal
+3. compute share
+
 
 The root cause is that back-propagation through the SPP layer is highly inefﬁcient when each training sample (i.e. RoI) comes from a different image, which is exactly how R-CNN and SPPnet networks are trained.
 
 each ROI have a very large receptive field, often spanning the entire input image. Since the forward pass must process the entire receptive field, the training inputs are large.
-
-I guess:
 Because a large number of images need to be calculated, the efficiency in time and space is very low, which leads to slow update and low efficiency.
+
+may be the reason of SVM
 
 ## Contributions
 1. Higher detection quality than RCNN, SPPnet
